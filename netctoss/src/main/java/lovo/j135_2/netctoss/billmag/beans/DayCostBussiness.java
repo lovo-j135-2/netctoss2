@@ -16,7 +16,7 @@ public class DayCostBussiness implements Serializable {
 	private Date beginTime;
 	private Date endTime;
 	private MonthCostBussiness monthBussiness;
-	private Bussiness bussiness;
+	private Business bussiness;
 	public DayCostBussiness() {
 		super();
 		// TODO Auto-generated constructor stub

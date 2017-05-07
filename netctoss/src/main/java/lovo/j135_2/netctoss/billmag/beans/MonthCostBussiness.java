@@ -15,7 +15,7 @@ public class MonthCostBussiness implements Serializable {
 	private String ip;
 	private String payType;
 	private MonthCostAccount accout;
-	private Bussiness bussiness;
+	private Business bussiness;
 	public MonthCostBussiness() {
 		super();
 		// TODO Auto-generated constructor stub
