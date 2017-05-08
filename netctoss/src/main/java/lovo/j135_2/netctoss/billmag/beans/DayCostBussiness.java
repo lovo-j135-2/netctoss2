@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import lovo.j135_2.netctoss.usermag.beans.Business;
+
 public class DayCostBussiness implements Serializable {
 
 	private Long id;
@@ -81,10 +83,11 @@ public class DayCostBussiness implements Serializable {
 	public void setMonthBussiness(MonthCostBussiness monthBussiness) {
 		this.monthBussiness = monthBussiness;
 	}
-	public Bussiness getBussiness() {
+	
+	public Business getBussiness() {
 		return bussiness;
 	}
-	public void setBussiness(Bussiness bussiness) {
+	public void setBussiness(Business bussiness) {
 		this.bussiness = bussiness;
 	}
 	@Override

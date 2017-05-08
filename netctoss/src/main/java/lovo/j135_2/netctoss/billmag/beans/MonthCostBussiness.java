@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import lovo.j135_2.netctoss.accoutmag.beans.MonthCostAccount;
+import lovo.j135_2.netctoss.usermag.beans.Business;
 
 public class MonthCostBussiness implements Serializable {
 
@@ -68,10 +69,11 @@ public class MonthCostBussiness implements Serializable {
 	public void setAccout(MonthCostAccount accout) {
 		this.accout = accout;
 	}
-	public Bussiness getBussiness() {
+	
+	public Business getBussiness() {
 		return bussiness;
 	}
-	public void setBussiness(Bussiness bussiness) {
+	public void setBussiness(Business bussiness) {
 		this.bussiness = bussiness;
 	}
 	@Override

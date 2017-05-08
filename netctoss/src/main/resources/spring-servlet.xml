@@ -12,6 +12,7 @@
    
    	<context:component-scan base-package="lovo.j135_2.netctoss">
     	<!-- 容器提供的过滤器类型还有：assignable(类名)，regex(正则)，aspectj(切面) -->
+    	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
     	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
