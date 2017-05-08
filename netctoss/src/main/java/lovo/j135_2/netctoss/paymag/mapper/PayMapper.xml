@@ -36,9 +36,6 @@
 			<if test="pay.costDiscrip!=null">
 				cost_discription=#{pay.costDiscrip},
 			</if>
-			<if test="pay.payStatus!=null">
-				pay_status=#{pay.payStatus},
-			</if>
 			<if test="pay.createTime!=null">
 				create_time=#{pay.createTime},
 			</if>
