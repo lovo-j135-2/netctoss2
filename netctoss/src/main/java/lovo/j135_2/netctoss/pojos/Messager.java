@@ -1,7 +1,6 @@
 package lovo.j135_2.netctoss.pojos;
 
 public class Messager {
-
 	private boolean status;
 	private String msg;
 	
