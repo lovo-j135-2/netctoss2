@@ -54,15 +54,19 @@
 			lovo.j135_2.netctoss.usermag.beans;
 			lovo.j135_2.netctoss.billmag.beans;
 			lovo.j135_2.netctoss.accoutmag.beans;
-			lovo.j135_2.netctoss.paymag.beans">
+			lovo.j135_2.netctoss.paymag.beans;
+			lovo.j135_2.netctoss.managermag.beans;
+			lovo.j135_2.netctoss.rightmag.beans
+			">
 		</property>
 	</bean>
 	
 	<!-- 第三步，配置SQL映射器的扫描 -->
 	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="
-			lovo.j135_2.netctoss.paymag.mapper,
-			lovo.j135_2.netctoss.loginmag.mapper
+			lovo.j135_2.netctoss.paymag.mapper;
+			lovo.j135_2.netctoss.loginmag.mapper;
+			lovo.j135_2.netctoss.managermag.mapper
 		">
 		</property>
 		
