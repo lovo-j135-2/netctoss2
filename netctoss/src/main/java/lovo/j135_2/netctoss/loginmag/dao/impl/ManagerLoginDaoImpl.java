@@ -27,7 +27,7 @@ public class ManagerLoginDaoImpl implements IManagerLoginDao {
 		return managerLoginMapper.getManagerById(id);
 	}
 	@Override
-	public Manager updateManager(Manager manager)throws Exception {
+	public int updateManager(Manager manager)throws Exception {
 		// TODO Auto-generated method stub
 		return managerLoginMapper.updateManager(manager);
 	}

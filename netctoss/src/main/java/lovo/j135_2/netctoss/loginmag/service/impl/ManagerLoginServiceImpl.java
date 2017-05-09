@@ -29,7 +29,7 @@ public class ManagerLoginServiceImpl implements IManagerLoginService {
 	}
 
 	@Override
-	public Manager updateManager(Manager manager)throws Exception {
+	public int updateManager(Manager manager)throws Exception {
 		// TODO Auto-generated method stub
 		return managerLoginDaoImpl.updateManager(manager);
 	}

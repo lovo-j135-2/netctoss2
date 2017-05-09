@@ -20,7 +20,7 @@ public List<Manager> queryManagerByaccountsAndPassword(@Param("ma")Manager manag
 public Manager getManagerById(Long id)throws Exception;
 
 @Update("update t_manager set password=#{ma.password} where id=#{ma.id}")
-public Manager updateManager(@Param("ma")Manager manager)throws Exception; 
+public int updateManager(@Param("ma")Manager manager)throws Exception; 
    
 	/**
      * 退出系统
