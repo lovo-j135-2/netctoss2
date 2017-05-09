@@ -41,7 +41,7 @@
 				<th field="password" width="80" align="right">密码</th>
 				<th field="phone" width="150">电话</th>
 				<th field="postcode" width="150">邮箱</th>
-				<!-- <th field="role" formatter="forRoleName" width="150">角色</th> -->
+				 <!-- <th field="role" formatter="forRoleName" width="150">角色</th>  -->
 				<th field="role" formatter="forRoleType" width="150">角色类型</th>
 
 				<!-- 				<th data-options="field:'name',width:100,align:'center'">名称</th>
