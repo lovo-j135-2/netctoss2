@@ -1,10 +1,13 @@
 package lovo.j135_2.netctoss.usermag.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import lovo.j135_2.netctoss.usermag.beans.Business;
+import lovo.j135_2.netctoss.usermag.beans.Pager;
 import lovo.j135_2.netctoss.usermag.dao.IBusinessDao;
 import lovo.j135_2.netctoss.usermag.service.BusinessService;
 @Service
@@ -18,9 +21,9 @@ public class BusinessServiceImpl implements BusinessService {
 	}
 
 	@Override
-	public int delBusiness(int id) throws Exception {
+	public int deleteBusiness(int id) throws Exception {
 		// TODO Auto-generated method stub
-		return businessDaoImpl.delBusiness(id);
+		return businessDaoImpl.deleteBusiness(id);
 	}
 
 	@Override
@@ -33,6 +36,12 @@ public class BusinessServiceImpl implements BusinessService {
 	public Business queryBusinessById(int id) throws Exception {
 		// TODO Auto-generated method stub
 		return businessDaoImpl.queryBusinessById(id);
+	}
+
+	@Override
+	public List<Business> queryBusinessByPager(Pager pager) throws Exception {
+		// TODO Auto-generated method stub
+		return businessDaoImpl.queryBusinessByPager(pager);
 	}
 
 }

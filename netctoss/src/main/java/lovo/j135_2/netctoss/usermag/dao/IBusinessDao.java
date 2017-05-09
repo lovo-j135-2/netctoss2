@@ -1,6 +1,11 @@
 package lovo.j135_2.netctoss.usermag.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import lovo.j135_2.netctoss.usermag.beans.Business;
+import lovo.j135_2.netctoss.usermag.beans.Pager;
 
 /**
  * 业务持久层接口
@@ -21,7 +26,7 @@ public interface IBusinessDao {
 	 * @return
 	 * @throws Exception
 	 */
-	public int delBusiness(int id) throws Exception;
+	public int deleteBusiness(int id) throws Exception;
 	/**
 	 * 修改业务状态
 	 * @param business
@@ -36,4 +41,12 @@ public interface IBusinessDao {
 	 * @throws Exception
 	 */
 	public Business queryBusinessById(int id) throws Exception;
+	/**
+	 * 分页查询
+	 * @param pager
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Business> queryBusinessByPager(Pager pager)throws Exception;
+	
 }
