@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -113,5 +114,28 @@ public class PayController {
 			mes.setMessage("删除失败");
 		}
 		return mes;
+	}
+	
+	@RequestMapping(value = "/findPaysByDate")
+	public PagePay findPaysByDate(@RequestParam(value="page")String page,
+			@RequestParam(value="rows")String rows,
+			@RequestParam(value="data[]")String[] data) {
+		PagePay pagePay = new PagePay();
+		pagePay.setPage(Integer.parseInt(page));
+		pagePay.setLines(Integer.parseInt(rows));
+		List<Date> dates = new ArrayList<Date>();
+		SimpleDateFormat simple = new SimpleDateFormat("yyyy-MM-dd");
+		Date date1;
+		try {
+			date1 = simple.parse(data[0]);
+			Date date2 = simple.parse(data[1]);
+			dates.add(date1);
+			dates.add(date2);
+			pagePay = payServiceImpl.findPaysByTime(dates, pagePay);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pagePay;
 	}
 }

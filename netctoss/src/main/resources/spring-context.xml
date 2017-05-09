@@ -4,6 +4,7 @@
     xmlns:context="http://www.springframework.org/schema/context"
     xmlns:aop="http://www.springframework.org/schema/aop"
     xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:task="http://www.springframework.org/schema/task"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
@@ -11,7 +12,9 @@
         http://www.springframework.org/schema/aop 
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/task 
+        http://www.springframework.org/schema/task/spring-task-4.0.xsd">
         
     <!-- 给类取别名 -->
 	
@@ -55,6 +58,8 @@
 			lovo.j135_2.netctoss.billmag.beans;
 			lovo.j135_2.netctoss.accoutmag.beans;
 			lovo.j135_2.netctoss.paymag.beans;
+			lovo.j135_2.netctoss.dmsmag.beans;
+			lovo.j135_2.netctoss.labmag.bean;
 			">
 		</property>
 	</bean>
@@ -62,11 +67,12 @@
 	<!-- 第三步，配置SQL映射器的扫描 -->
 	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="
-
 			lovo.j135_2.netctoss.paymag.mapper;
 			lovo.j135_2.netctoss.loginmag.mapper;
-			lovo.j135_2.netctoss.usermag.mapper
-
+			lovo.j135_2.netctoss.usermag.mapper;
+			lovo.j135_2.netctoss.accoutmag.mapper;
+			lovo.j135_2.netctoss.dmsmag.mapper;
+			lovo.j135_2.netctoss.labmag.mapper;
 		">
 		</property>
 		
@@ -112,6 +118,36 @@
 			<tx:method name="select*" propagation="SUPPORTS"/>
 		</tx:attributes>
 	</tx:advice>
+	
+	<!-- 给定时任务类命名 -->
+     <bean id="accoutTimerTask" class="lovo.j135_2.netctoss.accoutmag.timer.AccoutTimerTask" />
+     <bean id="labDayFilesTimerTask" class="lovo.j135_2.netctoss.labmag.timer.LabDayFilesTimerTask" />
+     
+     <!-- 配置定时任务执行 -->
+     <task:scheduled-tasks>   
+     	<!-- 表示程序启动5s后调用accoutTimerTask类中的job1方法，然后每隔10秒再调用job1一次 -->
+        <task:scheduled ref="accoutTimerTask" method="job1" initial-delay="5000" fixed-delay="10000"/>
+        <!-- 任务表示每天的23点59分59秒调用taskJob类中的job2方法 -->
+        <!-- ref是工作类
+			method是工作类中要执行的方法
+			initial-delay是任务第一次被调用前的延时，单位毫秒
+			fixed-delay是上一个调用完成后再次调用的延时
+			fixed-rate是上一个调用开始后再次调用的延时（不用等待上一次调用完成）
+			cron是表达式，表示在什么时候进行任务调度
+         -->
+         
+         <!-- cron参数按顺序依次为 
+			秒（0~59） 
+			分钟（0~59）
+			小时（0~23）
+			天（月）（0~31，但是你需要考虑你月的天数）用L表示最后一天
+			月（0~11）
+			天（星期）（1~7 1=SUN 或 SUN，MON，TUE，WED，THU，FRI，SAT）
+			年份（1970－2099） 
+		-->
+        <task:scheduled ref="accoutTimerTask" method="job2" cron="59 59 23 * * ?"/>  
+        <task:scheduled ref="labDayFilesTimerTask" method="addDayLabFilesEndOfTheMonth" cron="59 59 23 * * ?"/>  
+	</task:scheduled-tasks>
 	
 	<aop:config>
 		<aop:pointcut expression="execution(* lovo.j135_2.netctoss.*mag.service.impl.*ServiceImpl.*(..))" id="serviceMethod"/>

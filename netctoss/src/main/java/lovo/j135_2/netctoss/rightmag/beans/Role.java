@@ -13,7 +13,7 @@ public class Role implements Serializable {
 	private long id;
 	private String name;
 	private String roleType;
-	private List<Right>rights;
+	private List<Right> rights;
 	public Role() {
 		super();
 		// TODO Auto-generated constructor stub

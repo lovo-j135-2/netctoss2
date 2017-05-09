@@ -325,34 +325,35 @@ function updatePayStatus() {
 	
 }
 
-////按开通日期查询内容
-//function doSearch() {
-//	var date=new Date();
-//	var dateTime=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
-//	var begin=$("#searchBegin").val();
-//	var end=$("#searchEnd").val();
-//	if(begin==null){
-//		begin=1970-01-01;
-//	}
-//	if(end==null){
-//		begin=dateTime;
-//	}
-//	var dateArray=new Array();
-//	dateArray.push(begin);
-//	dateArray.push(end);
-//	
-//	$.ajax({
-//		type:"post",
-//		url:"paymag/findPaysByDate",
-//		async:true,
-////		data:{"list":JSON.stringify(dateArray)},
-//		contentType:"application/json",
-//		success:function(mes){
-//			//将来自后台的数据显示在页面上，调用loadData方，里面传值为json对象
-//			$('#dg').datagrid('loadData',mes);
-//		}
-//	});
-//}
+//按开通日期查询内容
+function doSearch() {
+	var date=new Date();
+	var dateTime=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+	var begin=$("#searchBegin").val();
+	var end=$("#searchEnd").val();
+	var options = $("#dg" ).datagrid("getPager" ).data("pagination" ).options;
+    var page = options.pageNumber;
+    var rows = options.pageSize;
+	if(begin==null){
+		begin=1970-01-01;
+	}
+	if(end==null){
+		begin=dateTime;
+	}
+	var dateArray=[begin,end];
+	$.ajax({
+		type:"post",
+		url:"paymag/findPaysByDate",
+		async:true,
+		data:{"data":dateArray,"page":page,"rows":rows},
+		dataType: 'json',
+		success:function(mes){
+			//将来自后台的数据显示在页面上，调用loadData方，里面传值为json对象
+			$('#dg').datagrid('loadData',mes);
+		}
+	});
+}
+
 
 // 后台到前台的日期处理
 Date.prototype.format = function (format) {  
@@ -396,3 +397,4 @@ function formatPrice(val,row){
 		return '已开通';
 	}
 }
+

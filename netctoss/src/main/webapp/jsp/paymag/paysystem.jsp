@@ -30,14 +30,14 @@
 </head>
 
 <body>
-	<!--<div id="tb" style="padding: 3px">
+	<div id="tb" style="padding: 3px">
 			<span>起始日期</span> <input id="searchBegin" class="easyui-datebox" 
 			style="line-height: 26px; border: 1px solid #ccc">&nbsp;&nbsp;
 			<span>结束日期</span> <input id="searchEnd" class="easyui-datebox" style="line-height: 26px; 
 			border: 1px solid #ccc">&nbsp;&nbsp;
 			<a href="javascript:void(0)" class="easyui-linkbutton" plain="true"
 				onclick="doSearch()">查询</a>
-	</div>-->
+	</div>
 	
 	<table id="dg" title="资费信息一览表" class="easyui-datagrid"
 		style="width: auto; height: auto" pagination="true"
