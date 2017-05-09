@@ -1,6 +1,11 @@
 package lovo.j135_2.netctoss.usermag.service;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import lovo.j135_2.netctoss.usermag.beans.AcconutUser;
+import lovo.j135_2.netctoss.usermag.beans.Pager;
 
 /**
  * 账务业务
@@ -32,4 +37,11 @@ public interface AcconutUserService {
 	 * @return 账务对象
 	 */
 	public AcconutUser queryAcconutUserById(int id) throws Exception; 
+	/**
+	 * 分页查询账务
+	 * @param pager
+	 * @return
+	 * @throws Exception
+	 */
+	public List<AcconutUser> queryAcconutUserByPager(Pager pager)throws Exception;
 }

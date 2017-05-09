@@ -12,7 +12,7 @@ public class Business implements Serializable{
 	 */
 	private static final long serialVersionUID = -7392409259437254963L;
 	
-	private int id;
+	private Long id;
 	private String business_name;
 	private String password;
 	private AcconutUser fk_accountuser_id;
@@ -30,10 +30,10 @@ public class Business implements Serializable{
 		this.pay = pay;
 		this.lab = lab;
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getBusiness_name() {
@@ -66,4 +66,10 @@ public class Business implements Serializable{
 	public void setLab(Lab lab) {
 		this.lab = lab;
 	}
+	@Override
+	public String toString() {
+		return "Business [id=" + id + ", business_name=" + business_name + ", password=" + password
+				+ ", fk_accountuser_id=" + fk_accountuser_id + ", pay=" + pay + ", lab=" + lab + "]";
+	}
+	
 }

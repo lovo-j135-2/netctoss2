@@ -1,5 +1,7 @@
 package lovo.j135_2.netctoss.usermag.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -7,10 +9,10 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import lovo.j135_2.netctoss.usermag.beans.AcconutUser;
+import lovo.j135_2.netctoss.usermag.beans.Pager;
 
 
 public interface AcconutUserMapper {
@@ -43,7 +45,7 @@ public interface AcconutUserMapper {
 	 */
 	@Select(value="select * from t_accountuser where id=#{id}")
 	@Results({
-		@Result(id=true,property="id",column="id",javaType=Integer.class),
+		@Result(id=true,property="id",column="id",javaType=Long.class),
 		@Result(property="real_name",column="real_name",javaType=String.class),
 		@Result(property="id_num",column="id_num",javaType=String.class),
 		@Result(property="password",column="password",javaType=String.class),
@@ -56,4 +58,25 @@ public interface AcconutUserMapper {
 		@Result(property="status",column="status",javaType=Integer.class)
 	})
 	public AcconutUser queryAcconutUserById(int id) throws Exception; 
+	/**
+	 * 分页查询账务
+	 * @param pager
+	 * @return
+	 * @throws Exception
+	 */
+	@Select(value="select * from t_accountuser limit #{pager.fromLine},#{pager.lines}")
+	@Results({
+		@Result(id=true,property="id",column="id",javaType=Long.class),
+		@Result(property="real_name",column="real_name",javaType=String.class),
+		@Result(property="id_num",column="id_num",javaType=String.class),
+		@Result(property="password",column="password",javaType=String.class),
+		@Result(property="gender",column="gender",javaType=Integer.class),
+		@Result(property="account_name",column="account_name",javaType=String.class),
+		@Result(property="phone",column="phone",javaType=String.class),
+		@Result(property="address",column="address",javaType=String.class),
+		@Result(property="postcode",column="postcode",javaType=String.class),
+		@Result(property="qq",column="qq",javaType=String.class),
+		@Result(property="status",column="status",javaType=Integer.class)
+	})
+	public List<AcconutUser> queryAcconutUserByPager(@Param("pager")Pager pager)throws Exception;
 }
