@@ -14,25 +14,23 @@ public class LoginLogBean implements Serializable{
 	private Long id;
 	private String account;
 	private Date loginTime;
-	private Date quitTime;
 	private List<OperateLogBean> operateLogs;
 	
 	public LoginLogBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public LoginLogBean(Long id, String account, Date loginTime, Date quitTime, List<OperateLogBean> operateLogs) {
+	public LoginLogBean(Long id, String account, Date loginTime, List<OperateLogBean> operateLogs) {
 		super();
 		this.id = id;
 		this.account = account;
 		this.loginTime = loginTime;
-		this.quitTime = quitTime;
 		this.operateLogs = operateLogs;
 	}
 	@Override
 	public String toString() {
-		return "LoginLogBean [id=" + id + ", account=" + account + ", loginTime=" + loginTime + ", quitTime=" + quitTime
-				+ ", operateLogs=" + operateLogs + "]";
+		return "LoginLogBean [id=" + id + ", account=" + account + ", loginTime=" + loginTime + ", operateLogs="
+				+ operateLogs + "]";
 	}
 	public Long getId() {
 		return id;
@@ -52,19 +50,11 @@ public class LoginLogBean implements Serializable{
 	public void setLoginTime(Date loginTime) {
 		this.loginTime = loginTime;
 	}
-	public Date getQuitTime() {
-		return quitTime;
-	}
-	public void setQuitTime(Date quitTime) {
-		this.quitTime = quitTime;
-	}
 	public List<OperateLogBean> getOperateLogs() {
 		return operateLogs;
 	}
 	public void setOperateLogs(List<OperateLogBean> operateLogs) {
 		this.operateLogs = operateLogs;
-	}
-	
-	
+	}	
 	
 }

@@ -22,7 +22,7 @@ public Manager getManagerById(Long id)throws Exception;
 	 * @param manager
 	 * @return
 	 */
-public Manager updateManager(Manager manager)throws Exception; 
+public int updateManager(Manager manager)throws Exception; 
 
     /**
      * 退出系统
