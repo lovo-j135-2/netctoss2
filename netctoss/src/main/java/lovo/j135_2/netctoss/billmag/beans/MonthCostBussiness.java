@@ -16,6 +16,7 @@ public class MonthCostBussiness implements Serializable {
 	private String ip;
 	private String payType;
 	private MonthCostAccount accout;
+	//业务
 	private Business bussiness;
 	public MonthCostBussiness() {
 		super();
