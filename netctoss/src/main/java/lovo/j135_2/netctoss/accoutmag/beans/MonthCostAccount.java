@@ -9,6 +9,7 @@ public class MonthCostAccount implements Serializable {
 	private int year;
 	private int month;
 	private int time;
+	//费用
 	private BigDecimal cost;
 	private int payStatus;
 	public MonthCostAccount() {
